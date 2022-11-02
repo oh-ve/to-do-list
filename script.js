@@ -14,7 +14,9 @@ const storage = [];
   this.msg = msg;
   this.checked = checked;
 }*/
-localStorage.clear();
+//localStorage.clear();
+
+console.log(localStorage);
 
 const button = document.getElementById("button");
 const ulElement = document.querySelector("ul");
@@ -34,10 +36,10 @@ button.addEventListener("click", () => {
   taskCounter++;
   let tempCounter = `tasknr.${taskCounter}`;
   console.log(localStorage);
-  window.localStorage.setItem(tempCounter, `${input}0`); //add 0 to input because not done with the task
+  window.localStorage.setItem(tempCounter, input);
   document.querySelector(".input").value = "";
   const divElement = document.createElement("div");
-  divElement.className = `tasknr.${taskCounter}`;
+  //divElement.className = `tasknr.${taskCounter}`;
   const checkElement = document.createElement("input");
   checkElement.type = "checkbox";
   const divTextElement = document.createElement("div");
@@ -52,20 +54,14 @@ button.addEventListener("click", () => {
   divElement.appendChild(buttonElement);
   buttonElement.addEventListener("click", () => {
     localStorage.removeItem(tempCounter);
-    console.log(tempCounter);
     divElement.remove();
-    console.log(localStorage);
   });
   document.getElementsByClassName("checkbox");
   checkElement.addEventListener("change", () => {
     if (checkElement.checked) {
       liElement.style.textDecoration = "line-through";
-      localStorage.setItem(tempCounter, `${input}1`);
-      console.log(localStorage);
     } else {
       liElement.style.textDecoration = "none";
-      localStorage.setItem(tempCounter, `${input}0`);
-      console.log(localStorage);
     }
   });
 
@@ -82,11 +78,33 @@ button.addEventListener("click", () => {
         liElement.innerText = input2;
         editArea.remove();
         liElement.style.display = "";
-        //if ()
+        if (checkElement.checked) {
+          window.localStorage.setItem(tempCounter, input2);
+          console.log(localStorage);
+        } else {
+          window.localStorage.setItem(tempCounter, input2);
+          console.log(localStorage);
+        }
       }
     });
   });
+
   ulElement.appendChild(divElement);
 });
+
+function allStorage() {
+  console.log("allstore");
+  keys = Object.keys(localStorage);
+  console.log(keys);
+  console.log(`keys length = ${taskCounter}`);
+  for (let i = keys.length - 1; i > -1; i--) {
+    console.log("allstore while");
+    document.querySelector(".input").value = localStorage.getItem(keys[i]);
+    console.log(`i = ${i}`);
+    button.click();
+  }
+  return values;
+}
+allStorage();
 
 console.log("HEREEE", ulElement);
