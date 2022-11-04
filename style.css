@@ -3,7 +3,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #6eb5c0;
- /*   background-image: url(src/watercolor.jpg); */
     background-size: 150%;
 }
 
@@ -162,7 +161,7 @@ li {
     background-color: #e2e8e4;
     border-radius: 5px;
     height: 27px;
-    width: 240px;
+    width: 97%;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 0.03em;
     font-size: 1.1em;
