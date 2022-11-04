@@ -54,7 +54,14 @@ button.addEventListener("click", () => {
   divTextElement.appendChild(liElement);
   divElement.appendChild(buttonElement);
   buttonElement.addEventListener("click", () => {
-    localStorage.removeItem(tempCounter);
+    //getKey(liElement.innerText);
+    console.log(
+      "liElement text = ",
+      liElement.innerText,
+      " key = ",
+      getKey(liElement.innerText)
+    );
+    localStorage.removeItem(getKey(liElement.innerText));
     divElement.remove();
   });
   document.getElementsByClassName("checkbox");
@@ -139,12 +146,14 @@ function inStorage(input) {
 
 function getKey(input) {
   keys = Object.keys(localStorage);
-  console.log("input ", input, " local storage ", localStorage);
+  let temp;
   keys.forEach((element) => {
     if (input === localStorage.getItem(element)) {
+      temp = element;
       return element;
     }
   });
+  return temp;
 }
 
 function toggleDark() {
