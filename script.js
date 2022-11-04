@@ -19,7 +19,9 @@ const storage = [];
 const button = document.getElementById("button");
 const ulElement = document.querySelector("ul");
 const areaField = document.getElementById("firstinput");
-let taskCounter = 0;
+keys = Object.keys(localStorage);
+let taskCounter = findHighest();
+console.log(taskCounter);
 areaField.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     document.getElementById("button").click();
@@ -54,13 +56,6 @@ button.addEventListener("click", () => {
   divTextElement.appendChild(liElement);
   divElement.appendChild(buttonElement);
   buttonElement.addEventListener("click", () => {
-    //getKey(liElement.innerText);
-    console.log(
-      "liElement text = ",
-      liElement.innerText,
-      " key = ",
-      getKey(liElement.innerText)
-    );
     localStorage.removeItem(getKey(liElement.innerText));
     divElement.remove();
   });
@@ -96,7 +91,6 @@ button.addEventListener("click", () => {
 });
 
 function allStorage() {
-  keys = Object.keys(localStorage);
   keys.forEach((element) => {
     document.querySelector(".input").value = localStorage.getItem(element);
     console.log(document.querySelector(".input").value);
@@ -106,8 +100,6 @@ function allStorage() {
 allStorage();
 
 function addToStorage(input, tempCounter) {
-  console.log("input ", input, " tempCounter ", tempCounter);
-  console.log(inStorage(input));
   if (inStorage(input)) {
     console.log("instorage");
     return;
@@ -118,20 +110,9 @@ function addToStorage(input, tempCounter) {
 }
 
 function inStorage(input) {
-  keys = Object.keys(localStorage);
   let isThere = false;
-  console.log("keys.length ", keys.length);
-  console.log("input ", input, " local storage ", localStorage);
   if (keys.length < 1) return false;
   keys.forEach((element) => {
-    console.log(
-      "item im Storage ",
-      localStorage.getItem(element),
-      " input ",
-      input,
-      " result of true ",
-      input === localStorage.getItem(element)
-    );
     if (input === localStorage.getItem(element)) {
       isThere = true;
     }
@@ -140,7 +121,6 @@ function inStorage(input) {
 }
 
 function getKey(input) {
-  keys = Object.keys(localStorage);
   let temp;
   keys.forEach((element) => {
     if (input === localStorage.getItem(element)) {
@@ -149,6 +129,21 @@ function getKey(input) {
     }
   });
   return temp;
+}
+
+function findHighest() {
+  let highest = 0;
+  keys.forEach((element) => {
+    let competitor = getNumbers(element);
+    if (highest < competitor) {
+      highest = competitor;
+    }
+  });
+  return highest;
+}
+
+function getNumbers(value) {
+  return value.match(/\d+/)[0];
 }
 
 function toggleDark() {
