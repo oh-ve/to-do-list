@@ -16,8 +16,6 @@ const storage = [];
 }*/
 //localStorage.clear();
 
-console.log(localStorage);
-
 const button = document.getElementById("button");
 const ulElement = document.querySelector("ul");
 const areaField = document.getElementById("firstinput");
@@ -35,11 +33,11 @@ button.addEventListener("click", () => {
   }
   taskCounter++;
   let tempCounter = `tasknr.${taskCounter}`;
-  console.log(localStorage);
-  window.localStorage.setItem(tempCounter, input);
+
+  addToStorage(input, tempCounter);
+
   document.querySelector(".input").value = "";
   const divElement = document.createElement("div");
-  //divElement.className = `tasknr.${taskCounter}`;
   const checkElement = document.createElement("input");
   checkElement.type = "checkbox";
   checkElement.className = "check";
@@ -96,18 +94,55 @@ button.addEventListener("click", () => {
 });
 
 function allStorage() {
-  console.log("allstore");
   keys = Object.keys(localStorage);
-  console.log(keys);
-  console.log(`keys length = ${taskCounter}`);
-  for (let i = keys.length - 1; i > -1; i--) {
-    console.log("allstore while");
-    document.querySelector(".input").value = localStorage.getItem(keys[i]);
-    console.log(`i = ${i}`);
+  keys.forEach((element) => {
+    document.querySelector(".input").value = localStorage.getItem(element);
+    console.log(document.querySelector(".input").value);
     button.click();
-  }
-  return values;
+  });
 }
 allStorage();
 
-console.log("HEREEE", ulElement);
+function addToStorage(input, tempCounter) {
+  console.log("input ", input, " tempCounter ", tempCounter);
+  console.log(inStorage(input));
+  if (inStorage(input)) {
+    console.log("instorage");
+    return;
+  } else {
+    console.log("NOTinstorage");
+    window.localStorage.setItem(tempCounter, input);
+  }
+}
+
+function inStorage(input) {
+  keys = Object.keys(localStorage);
+  let isThere = false;
+  console.log("keys.length ", keys.length);
+  console.log("input ", input, " local storage ", localStorage);
+  if (keys.length < 1) return false;
+  keys.forEach((element) => {
+    console.log(
+      "item im Storage ",
+      localStorage.getItem(element),
+      " input ",
+      input,
+      " result of true ",
+      input === localStorage.getItem(element)
+    );
+    if (input === localStorage.getItem(element)) {
+      isThere = true;
+    }
+  });
+  return isThere;
+}
+
+function getKey(input) {
+  keys = Object.keys(localStorage);
+  console.log("input ", input, " local storage ", localStorage);
+  keys.forEach((element) => {
+    if (input === localStorage.getItem(element)) {
+      return element;
+    }
+  });
+}
