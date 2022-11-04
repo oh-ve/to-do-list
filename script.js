@@ -111,3 +111,14 @@ function allStorage() {
 allStorage();
 
 console.log("HEREEE", ulElement);
+
+function toggleDark() {
+
+  let theme = document.getElementsByTagName('link')[0];
+
+  if (theme.getAttribute('href') == 'style.css') {
+      theme.setAttribute('href', 'dark.css');
+  } else {
+      theme.setAttribute('href', 'style.css');
+  }
+}

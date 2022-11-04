@@ -2,7 +2,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #6eb5c0;
+    flex-direction: column;
+    background-color: 	#3d3e51;
     background-size: 150%;
 }
 
@@ -17,7 +18,7 @@ body {
 }
 
 #todohead {
-    background-color: #006c84;
+    background-color: #212129;
     width: 100%;
     max-width: 800px;
     display: flex;
@@ -34,7 +35,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     width: auto;
-    color: #e2e8e4;
+    color: #9598a0;
 }
 
 #taskinput {
@@ -44,8 +45,8 @@ h1 {
 }
 
 #firstinput {
-    border: 1px solid #e2e8e4;
-    background-color: #e2e8e4;
+    border: 1px solid #9598a0;
+    background-color: #9598a0;
     border-radius: 5px;
     height: 30px;
     width: 240px;
@@ -58,7 +59,7 @@ h1 {
 #button {
         background-color: transparent;
         border: none;
-        color: #e2e8e4;
+        color: #9598a0;
         text-align: center;
         opacity: 1;
         display: inline-block;
@@ -73,7 +74,7 @@ h1 {
 ul {
     list-style-type: none;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #e2e8e4;
+    background-color: #4c5265;
     width: 100%;
     max-width: 800px;
     min-height: 250px;
@@ -93,7 +94,7 @@ ul div {
     flex-direction: row;
     flex-wrap: nowrap;
     width: 90%;
-    background-color: #006c84;
+    background-color: #212129;
     border-radius: 5px;
     z-index: 0;
     padding: 0.3em;
@@ -101,11 +102,11 @@ ul div {
 
 input[type=checkbox] {
   appearance: none;
-  background-color: #e2e8e4;
+  background-color: #9598a0;
   font: inherit;
   width: 1.4em;
   height: 1.4em;
-  border: 0.15em solid #006c84;
+  border: 0.15em solid #212129;
   border-radius: 0.2em;
   transform: translateY(-0.075em);
   display: grid;
@@ -115,19 +116,19 @@ input[type=checkbox] {
   margin-right: 0.5em;
 }
 
-input[type="checkbox"]::before {
+ul input[type="checkbox"]::before {
     content: "";
     width: 0.65em;
     height: 0.65em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em var(--form-control-color);
-    background-color: #006c84;
+    background-color: #212129;
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
   
-  input[type="checkbox"]:checked::before {
+  ul input[type="checkbox"]:checked::before {
     transform: scale(1);
   }
 
@@ -136,7 +137,7 @@ input[type="checkbox"]::before {
 li {
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 0.03em;
-    color: #e2e8e4;
+    color: #9598a0;
     font-size: 1.2em;
     padding-top: 0.25em;
     padding-bottom: 0.2em;
@@ -146,18 +147,18 @@ li {
 
     text-align: center;
     width: 2em;
-    opacity: 1;
+    opacity: 0.7;
     cursor: pointer;
     padding-top: 0.5em;
     margin-right: 0.5em;
     height: 1.9em;
 }
 
-.delete:hover {opacity: 0.8}
+.delete:hover {opacity: 0.6}
 
 .editField {
-    border: 1px solid #e2e8e4;
-    background-color: #e2e8e4;
+    border: 1px solid #9598a0;
+    background-color: #9598a0;
     border-radius: 5px;
     height: 27px;
     width: 97%;
@@ -175,6 +176,7 @@ li {
 }
 
 
+
 #toggledark {
     display: flex;
     flex-direction: row;
@@ -188,7 +190,7 @@ li {
 #toggledark p {
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 0.03em;
-    color: #e2e8e4;
+    color: #9598a0;
     font-size: 0.8em;
 
 }
