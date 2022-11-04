@@ -80,19 +80,14 @@ button.addEventListener("click", () => {
     editArea.type = "text";
     editArea.value = liElement.innerText;
     divTextElement.appendChild(editArea);
+    let tempText = liElement.innerText;
     editArea.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         let input2 = document.querySelector(".editField").value;
         liElement.innerText = input2;
         editArea.remove();
         liElement.style.display = "";
-        if (checkElement.checked) {
-          window.localStorage.setItem(tempCounter, input2);
-          console.log(localStorage);
-        } else {
-          window.localStorage.setItem(tempCounter, input2);
-          console.log(localStorage);
-        }
+        localStorage.setItem(getKey(tempText), input2);
       }
     });
   });
