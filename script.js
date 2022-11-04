@@ -42,12 +42,15 @@ button.addEventListener("click", () => {
   //divElement.className = `tasknr.${taskCounter}`;
   const checkElement = document.createElement("input");
   checkElement.type = "checkbox";
+  checkElement.className = "check";
   const divTextElement = document.createElement("div");
   const liElement = document.createElement("li");
   liElement.innerText = input;
+  liElement.title = "Edit task";
   const buttonElement = document.createElement("input");
-  buttonElement.type = "button";
-  buttonElement.value = "delete";
+  buttonElement.type = "image";
+  buttonElement.className = "delete";
+  buttonElement.src = "src/trash.png";
   divElement.appendChild(checkElement);
   divElement.appendChild(divTextElement);
   divTextElement.appendChild(liElement);
